@@ -1,0 +1,1 @@
+App que utiliza una API REST para obtener y enviar datos sobre empleados - Ejercicio del SDP'24 - Swift 6, SwiftUI, MVVM, OPP, Extension Pattern, Arquitectura Observable iOS 17 y posterior, Concurrencia Estricta con Swift 6

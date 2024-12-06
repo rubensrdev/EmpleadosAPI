@@ -6,17 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		459E91C62D031BF1004E175A /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91C32D031BF1004E175A /* EntryView.swift */; };
+		459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */; };
+		459E91C82D031BF1004E175A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459E91C02D031BF1004E175A /* Preview Assets.xcassets */; };
+		459E91C92D031BF1004E175A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459E91C22D031BF1004E175A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		459E91AF2D031BE2004E175A /* EmpleadosAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpleadosAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		459E91C02D031BF1004E175A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		459E91C22D031BF1004E175A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		459E91C32D031BF1004E175A /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadosAPIApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		459E91B12D031BE2004E175A /* EmpleadosAPI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EmpleadosAPI;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		459E91AC2D031BE2004E175A /* Frameworks */ = {
@@ -32,7 +35,7 @@
 		459E91A62D031BE2004E175A = {
 			isa = PBXGroup;
 			children = (
-				459E91B12D031BE2004E175A /* EmpleadosAPI */,
+				459E91C52D031BF1004E175A /* EmpleadosAPI */,
 				459E91B02D031BE2004E175A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +46,33 @@
 				459E91AF2D031BE2004E175A /* EmpleadosAPI.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		459E91C12D031BF1004E175A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				459E91C02D031BF1004E175A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		459E91C52D031BF1004E175A /* EmpleadosAPI */ = {
+			isa = PBXGroup;
+			children = (
+				459E91C12D031BF1004E175A /* Preview Content */,
+				459E91C22D031BF1004E175A /* Assets.xcassets */,
+				459E91CA2D031C42004E175A /* View */,
+				459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */,
+			);
+			path = EmpleadosAPI;
+			sourceTree = "<group>";
+		};
+		459E91CA2D031C42004E175A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				459E91C32D031BF1004E175A /* EntryView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +89,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				459E91B12D031BE2004E175A /* EmpleadosAPI */,
 			);
 			name = EmpleadosAPI;
 			packageProductDependencies = (
@@ -109,6 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459E91C82D031BF1004E175A /* Preview Assets.xcassets in Resources */,
+				459E91C92D031BF1004E175A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,
+				459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,11 +286,12 @@
 				DEVELOPMENT_TEAM = 8MU6QHY59H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Empleados;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -267,8 +299,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ruben.EmpleadosAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -284,11 +320,12 @@
 				DEVELOPMENT_TEAM = 8MU6QHY59H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Empleados;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,8 +333,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.ruben.EmpleadosAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

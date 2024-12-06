@@ -11,6 +11,8 @@
 		459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */; };
 		459E91C82D031BF1004E175A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459E91C02D031BF1004E175A /* Preview Assets.xcassets */; };
 		459E91C92D031BF1004E175A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459E91C22D031BF1004E175A /* Assets.xcassets */; };
+		459E91CD2D036D8B004E175A /* EmpleadoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91CC2D036D8B004E175A /* EmpleadoDTO.swift */; };
+		459E91CF2D036DCE004E175A /* Empleado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91CE2D036DCE004E175A /* Empleado.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		459E91C22D031BF1004E175A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		459E91C32D031BF1004E175A /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadosAPIApp.swift; sourceTree = "<group>"; };
+		459E91CC2D036D8B004E175A /* EmpleadoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoDTO.swift; sourceTree = "<group>"; };
+		459E91CE2D036DCE004E175A /* Empleado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empleado.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			children = (
 				459E91C12D031BF1004E175A /* Preview Content */,
 				459E91C22D031BF1004E175A /* Assets.xcassets */,
+				459E91CB2D036BFF004E175A /* Model */,
 				459E91CA2D031C42004E175A /* View */,
 				459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */,
 			);
@@ -73,6 +78,15 @@
 				459E91C32D031BF1004E175A /* EntryView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		459E91CB2D036BFF004E175A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				459E91CC2D036D8B004E175A /* EmpleadoDTO.swift */,
+				459E91CE2D036DCE004E175A /* Empleado.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459E91CF2D036DCE004E175A /* Empleado.swift in Sources */,
 				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,
+				459E91CD2D036D8B004E175A /* EmpleadoDTO.swift in Sources */,
 				459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

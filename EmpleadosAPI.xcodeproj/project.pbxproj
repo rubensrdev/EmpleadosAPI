@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4588FB522D04B33100207978 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4588FB512D04B33100207978 /* NetworkError.swift */; };
 		4588FB542D04B44A00207978 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4588FB532D04B44A00207978 /* URLSession.swift */; };
+		4588FB562D04B71F00207978 /* NetworkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4588FB552D04B71F00207978 /* NetworkInteractor.swift */; };
 		459E91C62D031BF1004E175A /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91C32D031BF1004E175A /* EntryView.swift */; };
 		459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */; };
 		459E91C82D031BF1004E175A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459E91C02D031BF1004E175A /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		4588FB512D04B33100207978 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4588FB532D04B44A00207978 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		4588FB552D04B71F00207978 /* NetworkInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInteractor.swift; sourceTree = "<group>"; };
 		459E91AF2D031BE2004E175A /* EmpleadosAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpleadosAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459E91C02D031BF1004E175A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		459E91C22D031BF1004E175A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				4588FB512D04B33100207978 /* NetworkError.swift */,
 				459E91D52D037610004E175A /* URL.swift */,
 				459E91D72D0462E9004E175A /* URLRequest.swift */,
+				4588FB552D04B71F00207978 /* NetworkInteractor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				459E91D62D037610004E175A /* URL.swift in Sources */,
+				4588FB562D04B71F00207978 /* NetworkInteractor.swift in Sources */,
 				4588FB522D04B33100207978 /* NetworkError.swift in Sources */,
 				459E91CF2D036DCE004E175A /* Empleado.swift in Sources */,
 				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,

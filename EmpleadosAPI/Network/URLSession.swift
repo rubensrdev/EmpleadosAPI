@@ -26,7 +26,7 @@ extension URLSession {
     }
     
 	/// Realiza una solicitud HTTP (de cualquier tipo, como POST, GET, etc) usando un URLRequest y devuelve los datos (Data) y la respuesta HTTP (HTTPURLResponse)
-    func getData(from request: URLRequest) async throws(NetworkError) -> (data: Data, response: HTTPURLResponse) {
+    func getData(for request: URLRequest) async throws(NetworkError) -> (data: Data, response: HTTPURLResponse) {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {

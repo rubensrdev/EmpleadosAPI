@@ -35,13 +35,13 @@ extension NetworkInteractor {
 		}
 	}
 	
-	/// Este método genérico realiza una solicitud HTTTP de tipo POST y valida el código de estado devuelto
+	/// Este método valida el código de estado devuelto por una solicitud HTTP.
 	/// - Parámetros:
 	///   - `request`: La solicitud HTTP a ejecutar.
 	///   - `status`: Código de estado esperado para una respuesta exitosa (por defecto, `200`).
 	/// - Errores:
 	///   - Lanza `NetworkError.status` si el código de estado HTTP no coincide con el esperado.
-	func postJSON(request: URLRequest, status: Int = 200) async throws(NetworkError) {
+	func validateStatus(request: URLRequest, status: Int = 200) async throws(NetworkError) {
 		let (_, response) = try await URLSession.shared.getData(for: request)
 		if response.statusCode != status {
 			throw .status(response.statusCode)

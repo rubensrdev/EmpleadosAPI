@@ -14,6 +14,7 @@
 		459E91CD2D036D8B004E175A /* EmpleadoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91CC2D036D8B004E175A /* EmpleadoDTO.swift */; };
 		459E91CF2D036DCE004E175A /* Empleado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91CE2D036DCE004E175A /* Empleado.swift */; };
 		459E91D62D037610004E175A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91D52D037610004E175A /* URL.swift */; };
+		459E91D82D0462E9004E175A /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91D72D0462E9004E175A /* URLRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		459E91CC2D036D8B004E175A /* EmpleadoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoDTO.swift; sourceTree = "<group>"; };
 		459E91CE2D036DCE004E175A /* Empleado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empleado.swift; sourceTree = "<group>"; };
 		459E91D52D037610004E175A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		459E91D72D0462E9004E175A /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				459E91D52D037610004E175A /* URL.swift */,
+				459E91D72D0462E9004E175A /* URLRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				459E91D62D037610004E175A /* URL.swift in Sources */,
 				459E91CF2D036DCE004E175A /* Empleado.swift in Sources */,
 				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,
+				459E91D82D0462E9004E175A /* URLRequest.swift in Sources */,
 				459E91CD2D036D8B004E175A /* EmpleadoDTO.swift in Sources */,
 				459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */,
 			);

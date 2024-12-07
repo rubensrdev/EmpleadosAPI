@@ -8,9 +8,6 @@ import Foundation
 
 /// Enumeración que define diferentes tipos de errores de red que pueden ocurrir durante la interacción con una API.
 ///
-/// - Conformidad con `LocalizedError`:
-///   Proporciona descripciones personalizadas de los errores en forma de cadenas legibles.
-///
 /// Casos definidos:
 /// - `general(Error)`: Representa un error general que encapsula cualquier objeto de tipo `Error`.
 /// - `status(Int)`: Indica un error basado en un código de estado HTTP no exitoso.

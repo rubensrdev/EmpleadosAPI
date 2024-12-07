@@ -20,6 +20,7 @@ enum HTTPMethod: String {
 }
 
 // Parametrización de las Request mediante la extensión de URLRequest
+// Ejemplo de uso: URLSession.shared.dataTask(with: .post(url: .empleado, body: Empleado.self))
 extension URLRequest {
 	/// Método estático que genera  y configura una solicitud de tipo HTTP GET, con unos ajustes predeterminados necesarios para interacturar con una API REST
 	static func get(_ url: URL) -> URLRequest {

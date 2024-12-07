@@ -33,7 +33,7 @@ extension URLRequest {
 	
 	/// Método estático que genera y configura un solicitud HTTP POST, con un cuerpo codificado como JSON y con unos ajustes predeterminados
 	/// para interacturas con una API REST
-	static func post<JSON>(url: URL, body: JSON, method: HTTPMethod = .post) -> URLRequest where JSON: Codable {
+	static func post<JSON>(url: URL, body: JSON, method: HTTPMethod = .post) -> URLRequest where JSON: Encodable {
 		var request = URLRequest(url: url)
 		request.timeoutInterval = 60
 		request.httpMethod = HTTPMethod.post.rawValue

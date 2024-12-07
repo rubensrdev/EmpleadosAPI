@@ -21,9 +21,28 @@ let api = prod
 #endif
 
 // Extensión para crear todas las URL's usar en la aplicación de manera estática
+// Combina la extensión de URLQueryItem con las funciones de URL para construir URLs limpias y fácilmente configurables.
+// Ejemplo de uso: URLSession.shared.data(from: .getEmpleados)
 extension URL {
-    /// Endpoint que devuelve todo los empleados del API Empleados
+    /// Propiedad que devuelve una URL para buscar todos los empleados del API Empleados
     static let getEmpleados = api.appending(path: "getEmpleados")
+    /// Función que devuelve una URL configurada para buscar un empleado con un parámetro id
+    static func getEmplead(id: Int) -> URL {
+        api.appending(path: "getEmpleado").appending(path: "\(id)")
+    }
+    /// Función que devuelve una URL configurada para buscar empleados con un parámetro de consulta search.
+    static func searchEmpleados(_ search: String) -> URL {
+        api.appending(path: "searchEmpleados").appending(queryItems: [.search(search)])
+    }
 }
-
+// URLQueryItem es: Es una estructura que representa un par clave-valor que se usa en la parte de consulta de una URL.
+// Por ejemplo, en https://api.example.com?search=empleados, search=empleados es un URLQueryItem
+// donde name es search y value es empleados.
+extension URLQueryItem {
+    /// Método estático que extiende a URLQueryItem donde el nombre del parámetro siempre será "search"
+    /// y al que solo habrá que pasarle el valor de búsqueda
+    static func search(_ search: String) -> URLQueryItem {
+        URLQueryItem(name: "search", value: search)
+    }
+}
 

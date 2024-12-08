@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct EntryView: View {
+	@State private var vm = EmpleadosViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "person.fill")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Empleados API App")
-                .font(.headline)
-        }
-        .padding()
+		NavigationStack {
+			List(vm.empleados) { empleado in
+				Text(empleado.firstName)
+			}
+			.navigationTitle("Empleados")
+		}
+		.task {
+			await vm.getEmpleados()
+		}
+		.alert("App Error", isPresented: $vm.showErrorAlert) {} message: {
+			Text(vm.errorMsg)
+		}
     }
 }
 

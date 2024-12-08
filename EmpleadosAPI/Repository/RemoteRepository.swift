@@ -10,7 +10,8 @@ import Foundation
 /// Estructura que implementa las interacciones de red con el repositorio remoto.
 /// - Propósito: Centralizar las solicitudes relacionadas con empleados desde una API remota.
 /// - Implementa `NetworkInteractor` para reutilizar métodos genéricos de red.
-struct RemoteRepository: NetworkInteractor {
+/// - Implementa `RepositoryProtocol` para reutilizar métodos genéricos de repositorio.
+struct RemoteRepository: NetworkInteractor, RepositoryProtocol {
 	
 	/// Recupera una lista de `Empleado` desde un recurso remoto
 	/// - Retorno:

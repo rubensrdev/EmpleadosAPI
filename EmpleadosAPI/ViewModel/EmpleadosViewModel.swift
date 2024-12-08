@@ -13,13 +13,17 @@ import Foundation
 final class EmpleadosViewModel {
 	
 	/// Propiedad de repositorio remoto para recuperar los datos de empleados
-	let repository = RemoteRepository()
+	let repository: RepositoryProtocol
 	/// Lista de `Empleado` que se obtendrán del repositorio y serán visibles en la vista
 	var empleados: Empleados = []
 	/// Indica si se debe mostrar un Alert de error
 	var showErrorAlert = false
 	/// Mensaje de error capturado en caso de fallo en la aplicación
 	var errorMsg = ""
+	
+	init(repository: RepositoryProtocol = RemoteRepository()) {
+		self.repository = repository
+	}
 	
 	/// Recupera la lista de `Empleado` desde el repositorio y actualiza la vista
 	/// - Todas las actualizaciones de propiedades observables se realizan en el hilo principal gracias a la macro `@MainActor`

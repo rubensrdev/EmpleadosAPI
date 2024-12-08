@@ -43,4 +43,6 @@ struct Empleado: Identifiable, Hashable {
     let gender: Genero
 }
 
+typealias Empleados = [Empleado]
+
 

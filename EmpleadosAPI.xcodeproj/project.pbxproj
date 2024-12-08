@@ -18,6 +18,7 @@
 		459E91CF2D036DCE004E175A /* Empleado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91CE2D036DCE004E175A /* Empleado.swift */; };
 		459E91D62D037610004E175A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91D52D037610004E175A /* URL.swift */; };
 		459E91D82D0462E9004E175A /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459E91D72D0462E9004E175A /* URLRequest.swift */; };
+		45F124A62D05A88D00773F70 /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F124A52D05A88D00773F70 /* RemoteRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		459E91CE2D036DCE004E175A /* Empleado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empleado.swift; sourceTree = "<group>"; };
 		459E91D52D037610004E175A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		459E91D72D0462E9004E175A /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		45F124A52D05A88D00773F70 /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				459E91C22D031BF1004E175A /* Assets.xcassets */,
 				459E91CB2D036BFF004E175A /* Model */,
 				459E91D42D0374AF004E175A /* Network */,
+				45F124A42D05A86100773F70 /* Repository */,
 				459E91CA2D031C42004E175A /* View */,
 				459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */,
 			);
@@ -103,13 +106,21 @@
 		459E91D42D0374AF004E175A /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4588FB532D04B44A00207978 /* URLSession.swift */,
 				4588FB512D04B33100207978 /* NetworkError.swift */,
 				459E91D52D037610004E175A /* URL.swift */,
 				459E91D72D0462E9004E175A /* URLRequest.swift */,
+				4588FB532D04B44A00207978 /* URLSession.swift */,
 				4588FB552D04B71F00207978 /* NetworkInteractor.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		45F124A42D05A86100773F70 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45F124A52D05A88D00773F70 /* RemoteRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,
 				459E91D82D0462E9004E175A /* URLRequest.swift in Sources */,
 				4588FB542D04B44A00207978 /* URLSession.swift in Sources */,
+				45F124A62D05A88D00773F70 /* RemoteRepository.swift in Sources */,
 				459E91CD2D036D8B004E175A /* EmpleadoDTO.swift in Sources */,
 				459E91C72D031BF1004E175A /* EmpleadosAPIApp.swift in Sources */,
 			);

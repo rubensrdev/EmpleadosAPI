@@ -6,7 +6,7 @@
 //
 
 /// Este protocolo define una interfaz común para todos los repositorios que gestionen datos relacionados con empleados
-protocol RepositoryProtocol {
+protocol RepositoryProtocol: Sendable {
 	/// Función asíncrona que recupera una lista de todos los empleados.
 	/// - Retorno:
 	///   - Una colección de objetos `Empleado` (`Empleados`).

@@ -17,7 +17,7 @@ import Foundation
 final class EmpleadosViewModel {
 	
 	/// Propiedad de repositorio remoto para recuperar los datos de empleados
-	let repository: RepositoryProtocol
+	let repository: RepositoryProtocol // Esto también provoca DataRace si no conformamos a Sendable
 	/// Lista de `Empleado` que se obtendrán del repositorio y serán visibles en la vista
 	var empleados: Empleados = []
 	/// Indica si se debe mostrar un Alert de error

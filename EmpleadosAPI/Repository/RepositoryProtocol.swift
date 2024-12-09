@@ -5,6 +5,10 @@
 //  Created by Rubén Segura Romo on 8/12/24.
 //
 
+// Se ha tenido que conformar a Sendable para evitar DataRace al instanciarlo
+// en el VM. Esto es porque al ser protocol no lo conforma por defecto (las clases
+// y estructuras si) y para cumplir con los requisitos de seguridad en concurrencia
+// es necesario y así puede usarse en contextos concurrentes o actor-isolated
 /// Este protocolo define una interfaz común para todos los repositorios que gestionen datos relacionados con empleados
 protocol RepositoryProtocol: Sendable {
 	/// Función asíncrona que recupera una lista de todos los empleados.

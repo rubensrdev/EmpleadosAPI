@@ -12,9 +12,22 @@ struct EntryView: View {
     var body: some View {
 		NavigationStack {
 			List(vm.empleados) { empleado in
-				Text(empleado.fullName)
+				HStack {
+					VStack(alignment: .leading) {
+						Text(empleado.fullName)
+							.font(.headline)
+						Text(empleado.email)
+							.font(.footnote)
+							.foregroundStyle(.secondary)
+						Text(empleado.username)
+							.font(.caption)
+							.foregroundStyle(.tertiary)
+					}
+					Spacer()
+					EmpleadoAsyncImage(empleado: empleado)
+				}
 			}
-			.navigationTitle("Empleados")
+			.navigationTitle("Employees")
 		}
 		.task {
 			await vm.getEmpleados()
@@ -28,3 +41,5 @@ struct EntryView: View {
 #Preview {
 	EntryView(vm: EmpleadosViewModel(repository: PreviewRepository()))
 }
+
+

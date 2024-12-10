@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-/*
- Flujo General de Uso -> Cuando otra parte del programa solicita una imagen:
-	 1.	getImage(url:) revisa el cache.
-	 2.	Si la imagen se está descargando, espera esa tarea.
-	 3.	Si ya está descargada, la devuelve al instante.
-	 4.	Si no está, inicia la descarga.
-	 5.	Una vez descargada, la guarda a disco y actualiza el estado a .downloaded.
 
- Este enfoque optimiza el rendimiento (evitando descargas repetidas), reduce el consumo de datos y mejora la experiencia
- del usuario al ofrecer imágenes ya en caché. Además, su uso de actor y tareas asincrónicas moderniza el flujo de trabajo
- y mantiene el código limpio y seguro ante condiciones de carrera.
- */
+//  Flujo General de Uso -> Cuando otra parte del programa solicita una imagen:
+// 1.	getImage(url:) revisa el cache.
+//    2.	Si la imagen se está descargando, espera esa tarea.
+//    3.	Si ya está descargada, la devuelve al instante.
+//    4.	Si no está, inicia la descarga.
+//    5.	Una vez descargada, la guarda a disco y actualiza el estado a .downloaded.
+//
+// Este enfoque optimiza el rendimiento (evitando descargas repetidas), reduce el consumo de datos y mejora la experiencia
+// del usuario al ofrecer imágenes ya en caché. Además, su uso de actor y tareas asincrónicas moderniza el flujo de trabajo
+// y mantiene el código limpio y seguro ante condiciones de carrera.
+ 
 /// Este Actor gestiona la descarga y el caché de imágenes desde una URL de forma asíncrona y segura
 /// frente a condiciones de Data Race en un entorno concurrente.
 /// - Uso: ImageDownloader se encarga de descargar las imágenes desde la red, manterlas en caché temporalmente en memoria miestras

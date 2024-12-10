@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct EntryView: View {
-	@State private var vm = EmpleadosViewModel()
+	@State var vm = EmpleadosViewModel()
     var body: some View {
 		NavigationStack {
 			List(vm.empleados) { empleado in
-				Text(empleado.firstName)
+				Text(empleado.fullName)
 			}
 			.navigationTitle("Empleados")
 		}
@@ -26,5 +26,5 @@ struct EntryView: View {
 }
 
 #Preview {
-    EntryView()
+	EntryView(vm: EmpleadosViewModel(repository: PreviewRepository()))
 }

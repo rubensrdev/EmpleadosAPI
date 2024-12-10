@@ -45,4 +45,9 @@ struct Empleado: Identifiable, Hashable {
 
 typealias Empleados = [Empleado]
 
+extension Empleado {
+	var fullName: String {
+		"\(lastName), \(firstName)"
+	}
+}
 

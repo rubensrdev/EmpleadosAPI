@@ -23,3 +23,6 @@ struct EmpleadoAsyncImage: View {
 	}
 }
 
+#Preview {
+	EmpleadoAsyncImage(empleado: .empleadoPreview)
+}

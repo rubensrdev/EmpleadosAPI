@@ -12,20 +12,7 @@ struct EntryView: View {
     var body: some View {
 		NavigationStack {
 			List(vm.empleados) { empleado in
-				HStack {
-					VStack(alignment: .leading) {
-						Text(empleado.fullName)
-							.font(.headline)
-						Text(empleado.email)
-							.font(.footnote)
-							.foregroundStyle(.secondary)
-						Text(empleado.username)
-							.font(.caption)
-							.foregroundStyle(.tertiary)
-					}
-					Spacer()
-					EmpleadoAsyncImage(empleado: empleado)
-				}
+				EmpleadoRow(empleado: empleado)
 			}
 			.navigationTitle("Employees")
 		}
@@ -41,5 +28,6 @@ struct EntryView: View {
 #Preview {
 	EntryView(vm: EmpleadosViewModel(repository: PreviewRepository()))
 }
+
 
 

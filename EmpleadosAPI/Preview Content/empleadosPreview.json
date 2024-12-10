@@ -54,24 +54,6 @@
         "address": "4 Forest Run Alley"
     },
     {
-        "id": 1027,
-        "firstName": "Pablo",
-        "avatar": null,
-        "lastName": "M\u00e1rmol",
-        "email": "p@marmol.com",
-        "zipcode": "25008",
-        "department": {
-            "name": "Services",
-            "id": 10
-        },
-        "address": "Calle Del Oso",
-        "username": "pablomarcmol ",
-        "gender": {
-            "id": 1,
-            "gender": "Male"
-        }
-    },
-    {
         "id": 807,
         "firstName": "Georges",
         "avatar": "https://robohash.org/delenitiautqui.png",

@@ -24,6 +24,16 @@ final class EmpleadosViewModel {
 	var showErrorAlert = false
 	/// Mensaje de error capturado en caso de fallo en la aplicación
 	var errorMsg = ""
+	/// Propiedad calculada que agrupa una lista de empleados por su departamento.
+	///
+	/// Utiliza el inicializador `Dictionary(grouping:by:)` para crear un diccionario donde cada clave es
+	/// un valor de tipo `Empleado.Departamento` y el valor asociado es un array de `[Empleado]
+	/// con todos los empleados de ese departmento
+	var empleadosDepartamento: [Empleado.Departamento : [Empleado]] {
+		Dictionary(grouping: empleados) { empleado in
+			empleado.department
+		}
+	}
 	
 	init(repository: RepositoryProtocol = RemoteRepository()) {
 		self.repository = repository

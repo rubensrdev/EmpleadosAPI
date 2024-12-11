@@ -10,7 +10,7 @@ import Foundation
 /// Representación del modelo Empleado que servirá para la representación de este en la app
 struct Empleado: Identifiable, Hashable {
 	/// Enumeración con los casos de tipo Departamento que puede tener un empleado
-    enum Departamento: String, CaseIterable {
+	enum Departamento: String, CaseIterable, Identifiable {
         case accounting = "Accounting"
         case engineering = "Engineering"
         case legal = "Legal"
@@ -23,6 +23,8 @@ struct Empleado: Identifiable, Hashable {
         case productManagement = "Product Management"
         case humanResources = "Human Resources"
         case services = "Services"
+		
+		var id: Self { self }
     }
 
 	/// Enumeración con los casos de tipo Genero que puede tener un empleado

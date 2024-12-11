@@ -11,8 +11,23 @@ struct EntryView: View {
 	@State var vm = EmpleadosViewModel()
     var body: some View {
 		NavigationStack {
-			List(vm.empleados) { empleado in
-				EmpleadoRow(empleado: empleado)
+			/* Sin secciones
+			 List(vm.empleados) { empleado in
+				 EmpleadoRow(empleado: empleado)
+			 }
+			 .navigationTitle("Employees")
+			 */
+			// Con secciones por DPTO
+			List {
+				ForEach(Empleado.Departamento.allCases) { dpto in
+					Section {
+						ForEach(vm.empleadosDepartamento[dpto, default: []]) { empleado in
+							EmpleadoRow(empleado: empleado)
+						}
+					} header: {
+						Text(dpto.rawValue)
+					}
+				}
 			}
 			.navigationTitle("Employees")
 		}

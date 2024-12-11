@@ -21,7 +21,8 @@ struct EmpleadoRow: View {
 					.foregroundStyle(.tertiary)
 			}
 			Spacer()
-			EmpleadoAsyncImage(empleado: empleado)
+			// EmpleadoAsyncImage(empleado: empleado)
+			EmpleadoCachedImageView(url: empleado.avatar)
 		}
 	}
 }
@@ -29,3 +30,4 @@ struct EmpleadoRow: View {
 #Preview {
 	EmpleadoRow(empleado: .empleadoPreview)
 }
+

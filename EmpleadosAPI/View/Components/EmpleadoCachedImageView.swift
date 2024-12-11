@@ -20,7 +20,9 @@ struct EmpleadoCachedImageView: View {
 			}
 		}
 		.onAppear {
-			cachedImage.getImage(url: url!)
+			if let url = url {
+				cachedImage.getImage(url: url)
+			}
 		}
 	}
 }

@@ -74,7 +74,6 @@ actor ImageDownloader {
 		   let heicData = uiImage.heicData() {
 			
 			try heicData.write(to: urlDoc(url: pathCache), options: .atomic)
-			print(pathCache)
 			cache.removeValue(forKey: url)
 		}
 		

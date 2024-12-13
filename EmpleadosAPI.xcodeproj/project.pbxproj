@@ -34,6 +34,7 @@
 		45FC2C982D0C3B5D0064839D /* EmpleadoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */; };
 		45FC2C9C2D0C3D500064839D /* EntryViewIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9B2D0C3D500064839D /* EntryViewIPad.swift */; };
 		45FC2C9E2D0C4DAD0064839D /* EntryViewIPad16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */; };
+		45FC2CA02D0CBAFE0064839D /* TextFieldEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoEditViewModel.swift; sourceTree = "<group>"; };
 		45FC2C9B2D0C3D500064839D /* EntryViewIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewIPad.swift; sourceTree = "<group>"; };
 		45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewIPad16.swift; sourceTree = "<group>"; };
+		45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEdit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		455E90A22D0860BF0029CA8C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */,
 				455E90B02D09B3900029CA8C /* EmpleadoCachedImageView.swift */,
 				455E90A82D0862830029CA8C /* EmpleadoRow.swift */,
 				455E90A32D0860C50029CA8C /* EmpleadoAsyncImage.swift */,
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FC2CA02D0CBAFE0064839D /* TextFieldEdit.swift in Sources */,
 				459E91D62D037610004E175A /* URL.swift in Sources */,
 				455E90B12D09B3900029CA8C /* EmpleadoCachedImageView.swift in Sources */,
 				45FC2C9E2D0C4DAD0064839D /* EntryViewIPad16.swift in Sources */,

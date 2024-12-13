@@ -24,10 +24,6 @@ struct TextFieldEdit: View {
 				.textContentType(.givenName)
 				.textInputAutocapitalization(.words)
 				.autocorrectionDisabled(true)
-			Text(errorMsg)
-				.font(.caption2)
-				.foregroundStyle(.red)
-				.opacity(errorText ? 1 : 0)
 		}
 		.padding(5)
 		.overlay {
@@ -35,6 +31,14 @@ struct TextFieldEdit: View {
 				.stroke(lineWidth: 2)
 				.fill(.red)
 				.opacity(errorText ? 1 : 0)
+		}
+		.overlay(alignment: .bottomLeading) {
+			Text(errorMsg)
+				.font(.caption2)
+				.foregroundStyle(.red)
+				.opacity(errorText ? 1 : 0)
+				.offset(y: 13)
+				.padding(.leading, 10)
 		}
 		.onChange(of: campo) {
 			if campo.isEmpty {

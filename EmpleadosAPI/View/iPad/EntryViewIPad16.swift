@@ -46,7 +46,7 @@ struct EntryViewIPad16: View {
 				}
 			}
 			.navigationTitle("Departments")
-			.navigationSplitViewColumnWidth(250)
+			.navigationSplitViewColumnWidth(275)
 		} content: {
 			if let selectedDepartment {
 				List(selection: $selectedEmpleado) {

@@ -14,6 +14,7 @@ struct TextFieldEdit: View {
 	@Binding var campo: String
 	@State private var errorText = false
 	@State private var errorMsg = ""
+	let validate: (String) -> String?
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -43,12 +44,14 @@ struct TextFieldEdit: View {
 				.padding(.leading, 10)
 		}
 		.onChange(of: campo) {
-			if campo.isEmpty {
-				errorText = true
-				errorMsg = "\(label) cannot be empty"
+			if let msg = validate(campo) {
+				errorMsg = "\(label.capitalized) \(msg)"
 			} else {
-				errorText = false
+				errorMsg = ""
 			}
+		}
+		.onChange(of: errorMsg) {
+			errorText = !errorMsg.isEmpty
 		}
 		.animation(.default, value: errorText)
 	}
@@ -56,5 +59,11 @@ struct TextFieldEdit: View {
 
 #Preview {
 	@Previewable @State var campo: String = "Homer"
-	TextFieldEdit(label: "First name", contentType: .givenName, autocapitalizationType: .words, campo: $campo )
+	TextFieldEdit(label: "firts name", contentType: .givenName, autocapitalizationType: .words, campo: $campo) { value in
+		if value.isEmpty {
+			" cannot be empty"
+		} else {
+			nil
+		}
+	}
 }

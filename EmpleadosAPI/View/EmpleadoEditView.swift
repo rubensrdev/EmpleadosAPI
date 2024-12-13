@@ -11,7 +11,10 @@ struct EmpleadoEditView: View {
 	@Bindable var empleadoEditVM: EmpleadoEditViewModel
 	var body: some View {
 		Form {
-			TextFieldEdit(label: "First Name", campo: $empleadoEditVM.firstName)
+			TextFieldEdit(label: "first name", contentType: .givenName, autocapitalizationType: .words, campo: $empleadoEditVM.firstName, validate: empleadoEditVM.validateIsEmpty)
+			TextFieldEdit(label: "last name", contentType: .name, autocapitalizationType: .words, campo: $empleadoEditVM.lastName, validate: empleadoEditVM.validateIsEmpty)
+			TextFieldEdit(label: "email", contentType: .emailAddress, autocapitalizationType: .never, campo: $empleadoEditVM.email, validate: empleadoEditVM.validateEmail)
+				.keyboardType(.emailAddress)
 		}
 	}
 }

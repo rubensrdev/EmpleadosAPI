@@ -8,12 +8,36 @@
 import SwiftUI
 
 struct EntryViewIPad: View {
-    var body: some View {
-		Label("Hello from iPad View", systemImage: "ipad")
-			.font(.title)
-    }
+	@State var vm = EmpleadosViewModel()
+	var body: some View {
+		NavigationStack {
+			List {
+				ForEach(Empleado.Departamento.allCases) { dpto in
+					Section {
+						ForEach(vm.empleadosDepartamento[dpto, default: []]) { empleado in
+							NavigationLink(value: empleado) {
+								EmpleadoRow(empleado: empleado)
+							}
+						}
+					} header: {
+						Text(dpto.rawValue)
+					}
+				}
+			}
+			.navigationTitle("Employees")
+			.navigationDestination(for: Empleado.self) { empleado in
+				EmpleadoEditView(empleadoEditVM: EmpleadoEditViewModel(empleado: empleado))
+			}
+		}
+		.task {
+			await vm.getEmpleados()
+		}
+		.alert("App Error", isPresented: $vm.showErrorAlert) {} message: {
+			Text(vm.errorMsg)
+		}
+	}
 }
 
 #Preview {
-    EntryViewIPad()
+    EntryViewIPad(vm: EmpleadosViewModel(repository: PreviewRepository()))
 }

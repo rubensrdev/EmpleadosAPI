@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+
+@MainActor let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+
 @main
 struct EmpleadosAPIApp: App {
     var body: some Scene {
         WindowGroup {
-            EntryViewIPhone()
+            if isIPad {
+				EntryViewIPad()
+			} else {
+				EntryViewIPhone()
+			}
         }
     }
 }

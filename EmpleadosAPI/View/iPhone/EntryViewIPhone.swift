@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EntryView: View {
+struct EntryViewIPhone: View {
 	@State var vm = EmpleadosViewModel()
     var body: some View {
 		NavigationStack {
@@ -46,7 +46,7 @@ struct EntryView: View {
 }
 
 #Preview {
-	EntryView(vm: EmpleadosViewModel(repository: PreviewRepository()))
+	EntryViewIPhone(vm: EmpleadosViewModel(repository: PreviewRepository()))
 }
 
 

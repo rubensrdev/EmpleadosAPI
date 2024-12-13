@@ -9,6 +9,8 @@ import SwiftUI
 struct TextFieldEdit: View {
 	
 	let label: String
+	let contentType: UITextContentType
+	let autocapitalizationType: TextInputAutocapitalization
 	@Binding var campo: String
 	@State private var errorText = false
 	@State private var errorMsg = ""
@@ -21,8 +23,8 @@ struct TextFieldEdit: View {
 				.foregroundStyle(errorText ? .red : .primary)
 			TextField("Enter the \(label.lowercased())", text: $campo, axis: .vertical)
 				.lineLimit(2)
-				.textContentType(.givenName)
-				.textInputAutocapitalization(.words)
+				.textContentType(contentType)
+				.textInputAutocapitalization(autocapitalizationType)
 				.autocorrectionDisabled(true)
 		}
 		.padding(5)
@@ -54,5 +56,5 @@ struct TextFieldEdit: View {
 
 #Preview {
 	@Previewable @State var campo: String = "Homer"
-	TextFieldEdit(label: "First name", campo: $campo )
+	TextFieldEdit(label: "First name", contentType: .givenName, autocapitalizationType: .words, campo: $campo )
 }

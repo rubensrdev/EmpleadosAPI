@@ -36,8 +36,9 @@ struct EntryViewIPad16: View {
 	@State var vm = EmpleadosViewModel()
 	@State private var selectedDepartment: Empleado.Departamento? = Empleado.Departamento.allCases.first
 	@State private var selectedEmpleado: Empleado?
+	@State private var visibility: NavigationSplitViewVisibility = .all
     var body: some View {
-		NavigationSplitView {
+		NavigationSplitView(columnVisibility: $visibility) {
 			List(selection: $selectedDepartment) {
 				ForEach(Empleado.Departamento.allCases) { dpto in
 					Text(dpto.rawValue)

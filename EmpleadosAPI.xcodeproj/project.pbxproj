@@ -33,6 +33,7 @@
 		45FC2C962D0C3ABB0064839D /* EmpleadoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C952D0C3ABB0064839D /* EmpleadoEditView.swift */; };
 		45FC2C982D0C3B5D0064839D /* EmpleadoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */; };
 		45FC2C9C2D0C3D500064839D /* EntryViewIPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9B2D0C3D500064839D /* EntryViewIPad.swift */; };
+		45FC2C9E2D0C4DAD0064839D /* EntryViewIPad16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		45FC2C952D0C3ABB0064839D /* EmpleadoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoEditView.swift; sourceTree = "<group>"; };
 		45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoEditViewModel.swift; sourceTree = "<group>"; };
 		45FC2C9B2D0C3D500064839D /* EntryViewIPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewIPad.swift; sourceTree = "<group>"; };
+		45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewIPad16.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				45FC2C9B2D0C3D500064839D /* EntryViewIPad.swift */,
+				45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */,
 			);
 			path = iPad;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			files = (
 				459E91D62D037610004E175A /* URL.swift in Sources */,
 				455E90B12D09B3900029CA8C /* EmpleadoCachedImageView.swift in Sources */,
+				45FC2C9E2D0C4DAD0064839D /* EntryViewIPad16.swift in Sources */,
 				4588FB562D04B71F00207978 /* NetworkInteractor.swift in Sources */,
 				45FC2C962D0C3ABB0064839D /* EmpleadoEditView.swift in Sources */,
 				455E90AB2D08629D0029CA8C /* PreviewData.swift in Sources */,

@@ -15,7 +15,7 @@ struct EmpleadosAPIApp: App {
     var body: some Scene {
         WindowGroup {
             if isIPad {
-				EntryViewIPad()
+				EntryViewIPad16()
 			} else {
 				EntryViewIPhone()
 			}

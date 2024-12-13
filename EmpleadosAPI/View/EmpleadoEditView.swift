@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EmpleadoEditView: View {
-	@State var empleadoEditVM: EmpleadoEditViewModel
+	@Bindable var empleadoEditVM: EmpleadoEditViewModel
 	var body: some View {
 		VStack {
 			Text(empleadoEditVM.empleado.fullName)

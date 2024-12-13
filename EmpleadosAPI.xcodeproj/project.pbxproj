@@ -30,6 +30,8 @@
 		45F124AB2D05BDDF00773F70 /* empleadosPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F124AA2D05BDDF00773F70 /* empleadosPreview.json */; };
 		45F124AD2D05BE6B00773F70 /* PreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F124AC2D05BE6B00773F70 /* PreviewRepository.swift */; };
 		45F124AF2D05BF4C00773F70 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F124AE2D05BF4C00773F70 /* RepositoryProtocol.swift */; };
+		45FC2C962D0C3ABB0064839D /* EmpleadoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C952D0C3ABB0064839D /* EmpleadoEditView.swift */; };
+		45FC2C982D0C3B5D0064839D /* EmpleadoEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		45F124AA2D05BDDF00773F70 /* empleadosPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empleadosPreview.json; sourceTree = "<group>"; };
 		45F124AC2D05BE6B00773F70 /* PreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRepository.swift; sourceTree = "<group>"; };
 		45F124AE2D05BF4C00773F70 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		45FC2C952D0C3ABB0064839D /* EmpleadoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoEditView.swift; sourceTree = "<group>"; };
+		45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpleadoEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 				455E90A72D0861780029CA8C /* Styles */,
 				455E90A22D0860BF0029CA8C /* Components */,
 				459E91C32D031BF1004E175A /* EntryView.swift */,
+				45FC2C952D0C3ABB0064839D /* EmpleadoEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			children = (
 				45F124A82D05AE3600773F70 /* EmpleadosViewModel.swift */,
 				455E90AE2D086F3A0029CA8C /* CachedImageViewModel.swift */,
+				45FC2C972D0C3B5D0064839D /* EmpleadoEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				459E91D62D037610004E175A /* URL.swift in Sources */,
 				455E90B12D09B3900029CA8C /* EmpleadoCachedImageView.swift in Sources */,
 				4588FB562D04B71F00207978 /* NetworkInteractor.swift in Sources */,
+				45FC2C962D0C3ABB0064839D /* EmpleadoEditView.swift in Sources */,
 				455E90AB2D08629D0029CA8C /* PreviewData.swift in Sources */,
 				4588FB522D04B33100207978 /* NetworkError.swift in Sources */,
 				455E90AF2D086F3A0029CA8C /* CachedImageViewModel.swift in Sources */,
@@ -266,6 +273,7 @@
 				459E91C62D031BF1004E175A /* EntryView.swift in Sources */,
 				45F124AF2D05BF4C00773F70 /* RepositoryProtocol.swift in Sources */,
 				459E91D82D0462E9004E175A /* URLRequest.swift in Sources */,
+				45FC2C982D0C3B5D0064839D /* EmpleadoEditViewModel.swift in Sources */,
 				45F124A92D05AE3600773F70 /* EmpleadosViewModel.swift in Sources */,
 				4588FB542D04B44A00207978 /* URLSession.swift in Sources */,
 				455E90A92D0862830029CA8C /* EmpleadoRow.swift in Sources */,

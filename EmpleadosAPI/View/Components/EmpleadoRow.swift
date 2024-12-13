@@ -24,6 +24,7 @@ struct EmpleadoRow: View {
 			// EmpleadoAsyncImage(empleado: empleado)
 			EmpleadoCachedImageView(url: empleado.avatar)
 		}
+		.padding(.trailing, 10)
 	}
 }
 

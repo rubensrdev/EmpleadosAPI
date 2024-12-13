@@ -22,7 +22,9 @@ struct EntryView: View {
 				ForEach(Empleado.Departamento.allCases) { dpto in
 					Section {
 						ForEach(vm.empleadosDepartamento[dpto, default: []]) { empleado in
-							EmpleadoRow(empleado: empleado)
+							NavigationLink(value: empleado) {
+								EmpleadoRow(empleado: empleado)
+							}
 						}
 					} header: {
 						Text(dpto.rawValue)
@@ -30,6 +32,9 @@ struct EntryView: View {
 				}
 			}
 			.navigationTitle("Employees")
+			.navigationDestination(for: Empleado.self) { empleado in
+				EmpleadoEditView(empleadoEditVM: EmpleadoEditViewModel(empleado: empleado))
+			}
 		}
 		.task {
 			await vm.getEmpleados()

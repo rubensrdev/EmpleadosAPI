@@ -44,10 +44,11 @@ struct TextFieldEdit: View {
 				errorText = false
 			}
 		}
+		.animation(.default, value: errorText)
 	}
 }
 
 #Preview {
-	@Previewable @State var campo: String = ""
+	@Previewable @State var campo: String = "Homer"
 	TextFieldEdit(label: "First name", campo: $campo )
 }

@@ -28,9 +28,11 @@ struct Empleado: Identifiable, Hashable {
     }
 
 	/// Enumeración con los casos de tipo Genero que puede tener un empleado
-    enum Genero: String, CaseIterable {
+	enum Genero: String, CaseIterable, Identifiable {
         case male = "Male"
         case female = "Female"
+		
+		var id: Self { self }
     }
     
     let id: Int

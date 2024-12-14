@@ -13,6 +13,7 @@ struct TextFieldEdit: View {
 	@Binding var campo: String
 	@State private var errorText = false
 	@State private var errorMsg = ""
+	@FocusState private var isFocused: Bool
 	let validate: (String) -> String?
 	
 	var body: some View {
@@ -32,13 +33,13 @@ struct TextFieldEdit: View {
 				HStack {
 					TextField("Enter the \(label.lowercased())", text: $campo, axis: .vertical)
 						.padding(.leading, 10)
-						.padding(.trailing, campo.isEmpty ? 10 : 30) // Espacio para el botón "X"
+						.padding(.trailing, isFocused ? 30 : 10)
 						.textContentType(contentType)
 						.textInputAutocapitalization(autocapitalizationType)
 						.autocorrectionDisabled(true)
+						.focused($isFocused)
 					
-					
-					if !campo.isEmpty {
+					if isFocused && !campo.isEmpty {
 						Button(action: {
 							campo = ""
 						}) {

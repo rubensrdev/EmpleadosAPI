@@ -7,6 +7,39 @@
 
 import SwiftUI
 
+/// Esta es la vista de edición de un empleado, que permite modificar tanto información personal como corporativa.
+///
+/// - Objetivo:
+///   Presentar un formulario para editar los datos de un empleado, separando la información en secciones.
+///   La vista utiliza el `EmpleadoEditViewModel` para trabajar con una copia editable del empleado,
+///   así como el componente `TextFieldEdit` para campos con validación integrada.
+///
+/// - Secciones del formulario:
+///   1. **Personal Information:**
+///      - Nombre (`firstName`)
+///      - Apellido (`lastName`)
+///      - Dirección (`address`)
+///      - Género (`gender`) - seleccionado mediante un `Picker` con estilo segmentado.
+///
+///   2. **Corporate Information:**
+///      - Email (`email`) - utiliza validación de formato con `validateEmail`.
+///      - Nombre de usuario (`username`) - utiliza validación genérica para campos vacíos.
+///      - Departamento (`department`) - seleccionado mediante un `Picker` con estilo navegación.
+///
+/// - Uso de `TextFieldEdit`:
+///   Cada campo utiliza el componente personalizado `TextFieldEdit` para mostrar el texto, la etiqueta, el fondo y la validación
+///   automáticamente. Si el campo es inválido, se muestra un mensaje de error.
+///
+/// - Navegación:
+///   Esta vista se puede presentar dentro de una `NavigationStack` para ofrecer una experiencia
+///   consistente con las convenciones de SwiftUI.
+///
+/// - Ejemplo:
+///   ```swift
+///   NavigationStack {
+///       EmpleadoEditView(empleadoEditVM: EmpleadoEditViewModel(empleado: .empleadoPreview))
+///   }
+///   ```
 struct EmpleadoEditView: View {
 	@Bindable var empleadoEditVM: EmpleadoEditViewModel
 	var body: some View {

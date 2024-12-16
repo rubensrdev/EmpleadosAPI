@@ -36,6 +36,7 @@
 		45FC2C9E2D0C4DAD0064839D /* EntryViewIPad16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */; };
 		45FC2CA02D0CBAFE0064839D /* TextFieldEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */; };
 		45FC2CA22D1046960064839D /* ModelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2CA12D1046960064839D /* ModelAPI.swift */; };
+		45FC2CA42D108E750064839D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45FC2CA32D108E750064839D /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		45FC2C9D2D0C4DAD0064839D /* EntryViewIPad16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewIPad16.swift; sourceTree = "<group>"; };
 		45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEdit.swift; sourceTree = "<group>"; };
 		45FC2CA12D1046960064839D /* ModelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAPI.swift; sourceTree = "<group>"; };
+		45FC2CA32D108E750064839D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				45F124A72D05AE1A00773F70 /* ViewModel */,
 				459E91CA2D031C42004E175A /* View */,
 				459E91C42D031BF1004E175A /* EmpleadosAPIApp.swift */,
+				45FC2CA32D108E750064839D /* Localizable.xcstrings */,
 			);
 			path = EmpleadosAPI;
 			sourceTree = "<group>";
@@ -256,7 +259,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				es,
 			);
 			mainGroup = 459E91A62D031BE2004E175A;
 			minimizedProjectReferenceProxies = 1;
@@ -277,6 +280,7 @@
 			files = (
 				459E91C82D031BF1004E175A /* Preview Assets.xcassets in Resources */,
 				459E91C92D031BF1004E175A /* Assets.xcassets in Resources */,
+				45FC2CA42D108E750064839D /* Localizable.xcstrings in Resources */,
 				45F124AB2D05BDDF00773F70 /* empleadosPreview.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +383,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -435,6 +440,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -7,37 +7,38 @@
 
 import SwiftUI
 
-/// Vista principal adaptada para iOS 16 y superior, que aprovecha `NavigationSplitView` para
-/// ofrecer una experiencia optimizada en iPad.
+/// Vista principal adaptada para iOS 16 y superior, que aprovecha `NavigationSplitView`
+/// para ofrecer una experiencia optimizada en iPad.
+///
+/// - Inyección de Dependencias:
+///   Obtiene el ViewModel `EmpleadosViewModel` desde el entorno (`@Environment`).
+///   Gracias a `@Bindable`, la vista se actualiza automáticamente cuando cambian las propiedades del ViewModel.
 ///
 /// - Funcionalidad:
 ///   Presenta una estructura de navegación dividida en tres columnas:
-///   1. **Columna de Departamentos:** Muestra una lista de departamentos disponibles.
-///   2. **Columna de Empleados:** Cuando se selecciona un departamento, se despliega su lista de empleados.
-///   3. **Columna Detalle:** Al seleccionar un empleado, muestra una vista de edición detallada.
-///
-/// - Estado:
-///   - `vm`: Instancia de `EmpleadosViewModel`, el cual se encarga de obtener y manejar datos de empleados.
-///   - `selectedDepartment`: El departamento actualmente seleccionado en la primera columna.
-///   - `selectedEmpleado`: El empleado actualmente seleccionado en la segunda columna.
+///   1. **Departamentos (Izquierda):** Lista de departamentos disponibles.
+///   2. **Empleados (Centro):** Empleados del departamento seleccionado.
+///   3. **Detalle (Derecha):** Al seleccionar un empleado, muestra una vista para editar su información.
 ///
 /// - Flujo:
-///   1. Al aparecer la vista, se ejecuta `vm.getEmpleados()` para cargar los empleados.
-///   2. El usuario selecciona un departamento en la primera columna, filtrando así los empleados mostrados en la segunda.
-///   3. Al elegir un empleado en la segunda columna, se presenta su información en la tercera columna (detalle).
+///   1. Al aparecer, `vm.getEmpleados()` carga los empleados desde el repositorio.
+///   2. El usuario escoge un departamento, filtrando los empleados mostrados.
+///   3. Eligiendo un empleado, se muestra su detalle en la tercera columna.
 ///
 /// - Interfaz:
-///   Usa `NavigationSplitView`, disponible en iOS 16 y versiones superiores, permitiendo una experiencia más flexible
-///   que `NavigationView`. Cada columna puede ajustarse a anchos fijos, brindando una navegación más ergonómica en iPad.
+///   Usa `NavigationSplitView` (iOS 16+), permitiendo mayor flexibilidad que `NavigationView`.
+///   Cada columna puede ajustarse en tamaño, optimizando la experiencia en pantallas grandes.
 ///
 /// - Errores:
-///   Si ocurre algún fallo al obtener los empleados, se muestra una alerta informando del problema.
+///   Si ocurre algún fallo al obtener los empleados, se muestra una alerta con el mensaje descriptivo.
+///
 struct EntryViewIPad16: View {
-	@State var vm = EmpleadosViewModel()
+	@Environment(EmpleadosViewModel.self) private var vm
 	@State private var selectedDepartment: Empleado.Departamento? = Empleado.Departamento.allCases.first
 	@State private var selectedEmpleado: Empleado?
 	@State private var visibility: NavigationSplitViewVisibility = .all
     var body: some View {
+		@Bindable var vm = vm
 		NavigationSplitView(columnVisibility: $visibility) {
 			List(selection: $selectedDepartment) {
 				ForEach(Empleado.Departamento.allCases) { dpto in
@@ -78,4 +79,5 @@ struct EntryViewIPad16: View {
 
 #Preview {
     EntryViewIPad16()
+		.environment(EmpleadosViewModel(repository: PreviewRepository()))
 }

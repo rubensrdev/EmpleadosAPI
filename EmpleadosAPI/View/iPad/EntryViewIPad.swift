@@ -7,35 +7,41 @@
 
 import SwiftUI
 
-/// Vista principal para iPad que presenta un listado de departamentos y empleados.
+/// Vista principal para iPad que presenta un listado de departamentos y empleados,
+/// utilizando `NavigationView` para compatibilidad con iOS 15.
 ///
-/// - Compatibilidad:
-///   Utiliza `NavigationView` para mantener compatibilidad retroactiva con iOS 15,
-///   proporcionando una interfaz adaptada al iPad con navegación dividida entre departamentos y empleados.
+/// - Inyección de Dependencias:
+///   Obtiene el ViewModel `EmpleadosViewModel` desde el entorno (`@Environment`),
+///   lo que facilita la sustitución del repositorio para pruebas o previews.
+///   El ViewModel se marca con `@Bindable` para que la vista reaccione automáticamente
+///   a cambios en sus propiedades.
 ///
 /// - Funcionamiento:
-///   La vista muestra una lista de departamentos en la columna de la izquierda y, al seleccionar uno,
-///   despliega la lista de empleados correspondientes en la columna central. El usuario puede entonces
-///   navegar hacia la vista de edición de un empleado en la columna derecha.
+///   1. Columna Izquierda (Departamentos): Muestra la lista de departamentos.
+///      Al seleccionar uno, se filtran los empleados para mostrar solo los de ese departamento.
+///   2. Columna Central (Empleados): Presenta la lista de empleados del departamento seleccionado.
+///      Cada empleado ofrece un `NavigationLink` para acceder a su vista de edición.
+///   3. Columna Derecha (Detalle): Si se selecciona un empleado, se muestra su vista de edición.
+///      Si no hay ningún empleado seleccionado, se muestra una vista indicando que no se ha seleccionado ninguno.
 ///
-/// - Estado interno:
-///   - `vm`: Un `EmpleadosViewModel` que contiene la lógica de negocio para obtener y gestionar los empleados.
-///   - `selectedDepartment`: El departamento actualmente seleccionado, utilizado para filtrar la lista de empleados.
-///
-/// - Flujo:
-///   1. Al aparecer la vista, se dispara la tarea `vm.getEmpleados()` para cargar los empleados desde el repositorio.
-///   2. La lista de departamentos se muestra en la columna izquierda. Al seleccionar uno, se filtra `vm.empleadosDepartamento`
-///      para mostrar solo los empleados de ese departamento.
-///   3. Cada empleado se muestra en una `NavigationLink` que lleva a una vista de edición (`EmpleadoEditView`).
-///   4. Si ningún empleado está seleccionado, se muestra una `ContentUnavailableView` con un mensaje de ayuda.
+/// - Flujo de Datos:
+///   - Al aparecer la vista, se llama a `vm.getEmpleados()` para cargar los datos desde el repositorio.
+///   - Al seleccionar un departamento, se utiliza `vm.empleadosDepartamento` para actualizar la lista de empleados.
+///   - Al elegir un empleado, se abre `EmpleadoEditView` para modificar su información.
 ///
 /// - Errores:
-///   Si se produce un error al obtener los empleados, se muestra una alerta con el mensaje correspondiente.
+///   Si ocurre un error durante la obtención de los empleados, se muestra una alerta con el mensaje descriptivo.
 ///
+/// - Ejemplo de uso en `Preview`:
+///   ```swift
+///   EntryViewIPad()
+///       .environment(EmpleadosViewModel(repository: PreviewRepository()))
+///   ```
 struct EntryViewIPad: View {
-	@State var vm = EmpleadosViewModel()
+	@Environment(EmpleadosViewModel.self) private var vm
 	@State private var selectedDepartment: Empleado.Departamento? = Empleado.Departamento.allCases.first
 	var body: some View {
+		@Bindable var vm = vm
 		NavigationView {
 			List(selection: $selectedDepartment) {
 				ForEach(Empleado.Departamento.allCases) { dpto in
@@ -71,5 +77,6 @@ struct EntryViewIPad: View {
 }
 
 #Preview {
-    EntryViewIPad(vm: EmpleadosViewModel(repository: PreviewRepository()))
+    EntryViewIPad()
+		.environment(EmpleadosViewModel(repository: PreviewRepository()))
 }

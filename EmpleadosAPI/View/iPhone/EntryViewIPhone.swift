@@ -14,25 +14,33 @@ import SwiftUI
 ///   pertenecientes a ese departamento. Al seleccionar un empleado, se navega a una vista de edición detallada.
 ///
 /// - Arquitectura:
-///   Esta vista utiliza `NavigationStack`, introducido en iOS 16, que ofrece una experiencia de navegación
-///   más clara y declarativa que `NavigationView`.
+///   - Utiliza `NavigationStack`, disponible en iOS 16+, para una experiencia de navegación más clara y declarativa.
+///   - El ViewModel (`EmpleadosViewModel`) se obtiene desde el entorno (`@Environment`), permitiendo así la
+///     inyección de dependencias y facilitando el uso de diferentes repositorios en entornos de pruebas o previews.
 ///
 /// - Estado:
-///   - `vm`: Instancia de `EmpleadosViewModel`, encargada de obtener y filtrar los empleados por departamento.
-///   - Las propiedades `showErrorAlert` y `errorMsg` del ViewModel controlan la presentación de errores.
+///   - `vm`: Se recupera del entorno y se marca con `@Bindable` para actualizar la UI automáticamente
+///     cuando cambian las propiedades del ViewModel, como `showErrorAlert` y `errorMsg`.
 ///
 /// - Flujo:
-///   1. Al cargarse, la vista solicita los empleados al ViewModel (`vm.getEmpleados()`).
-///   2. Una vez cargados, agrupa automáticamente los empleados por departamento utilizando el computed property `empleadosDepartamento`.
-///   3. Cada departamento se muestra como una `Section` en el `List`, con enlaces de navegación a cada empleado.
-///   4. Al pulsar sobre un empleado, se navega con `NavigationDestination` hacia `EmpleadoEditView`.
+///   1. Al cargarse la vista, se solicita la lista de empleados usando `vm.getEmpleados()`.
+///   2. Los empleados se agrupan automáticamente por departamento mediante la propiedad calculada `empleadosDepartamento`.
+///   3. Cada departamento se muestra como una `Section` en el `List`, y cada empleado como una fila con `NavigationLink`.
+///   4. Al seleccionar un empleado, la navegación se dirige a `EmpleadoEditView`, donde se puede editar la información del empleado.
 ///
 /// - Errores:
-///   Si ocurre un error durante la carga de empleados, se muestra una alerta con el mensaje correspondiente.
+///   Si ocurre un error al obtener los empleados, se muestra una alerta con el mensaje correspondiente.
 ///
+/// - Ejemplo de uso en `Preview`:
+///   ```swift
+///   EntryViewIPhone()
+///       .environment(EmpleadosViewModel(repository: PreviewRepository()))
+///   ```
 struct EntryViewIPhone: View {
-	@State var vm = EmpleadosViewModel()
-    var body: some View {
+	@Environment(EmpleadosViewModel.self) private var vm
+    
+	var body: some View {
+		@Bindable var vm = vm
 		NavigationStack {
 			List {
 				ForEach(Empleado.Departamento.allCases) { dpto in
@@ -62,7 +70,8 @@ struct EntryViewIPhone: View {
 }
 
 #Preview {
-	EntryViewIPhone(vm: EmpleadosViewModel(repository: PreviewRepository()))
+	EntryViewIPhone()
+		.environment(EmpleadosViewModel(repository: PreviewRepository()))
 }
 
 

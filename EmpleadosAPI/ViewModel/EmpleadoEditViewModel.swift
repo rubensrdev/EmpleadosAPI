@@ -44,6 +44,9 @@ final class EmpleadoEditViewModel {
 	var department: Empleado.Departamento
 	var gender: Empleado.Genero
 	
+	var showAlert = false
+	var errorMessage = ""
+	
 	init (empleado: Empleado) {
 		self.empleado = empleado
 		
@@ -78,5 +81,86 @@ final class EmpleadoEditViewModel {
  	func validateEmail(text: String) -> String? {
 		let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
 		return text.range(of: emailRegex, options: .regularExpression) != nil ? nil : "is not a valid email"
+	}
+	
+	/// Valida un nombre de usuario según los siguientes criterios:
+	/// - Debe tener entre 6 y 16 caracteres.
+	/// - Solo se permiten letras y números (sin símbolos).
+	///
+	/// - Parámetros:
+	///   - value: La cadena a validar.
+	/// - Retorno:
+	///   - Una cadena con el mensaje de error si el valor no cumple las condiciones,
+	///     `nil` si es válido.
+	func validateUsername(value: String) -> String? {
+		guard value.count >= 6 && value.count <= 16 else {
+			return "must be between 6 and 16 characters long"
+		}
+		let allowedCharacters = CharacterSet.alphanumerics
+		if value.rangeOfCharacter(from: allowedCharacters.inverted) != nil {
+			return "can only contain letters and numbers"
+		}
+		
+		return nil
+	}
+	
+	/// Esta función intenta actualizar la información del empleado a partir de los campos editables del ViewModel.
+	///
+	/// Este método valida cada uno de los datos (`firstName`, `lastName`, `email`, `username`, `address`, `zipCode`)
+	/// mediante las funciones de validación definidas en el ViewModel. Si algún campo no cumple con los criterios
+	/// (por ejemplo, cadenas vacías o email inválido), acumula los mensajes de error en una variable temporal.
+	///
+	/// - Comportamiento:
+	///   - Si hay errores, se asignan a `errorMessage`, se muestra una alerta (`showAlert.toggle()`) y se devuelve `nil`.
+	///   - Si no hay errores, se crea y retorna una instancia de `Empleado` con los datos actualizados.
+	///
+	/// - Retorno:
+	///   - Un objeto `Empleado` con la información ya validada y actualizada si no hay errores.
+	///   - `nil` si la validación falla y se notifica el error al usuario.
+	func updateEmpleado() -> Empleado? {
+		var errors = ""
+
+		if let msg = validateIsEmpty(value: firstName) {
+			errors += "First name \(msg)\n"
+		}
+		
+		if let msg = validateIsEmpty(value: lastName) {
+			errors += "Last name \(msg)\n"
+		}
+		
+		if let msg = validateEmail(text: email) {
+			errors += "Email \(msg)\n"
+		}
+		
+		if let msg = validateUsername(value: username) {
+			errors += "Username \(msg)\n"
+		}
+		
+		if let msg = validateIsEmpty(value: address) {
+			errors += "Address \(msg)\n"
+		}
+		
+		if let msg = validateIsEmpty(value: zipCode) {
+			errors += "Zip code \(msg)\n"
+		}
+		
+		if !errors.isEmpty {
+			errorMessage = errors.trimmingCharacters(in: .whitespacesAndNewlines)
+			showAlert.toggle()
+			return nil
+		}
+		
+		return Empleado(
+			id: empleado.id,
+			firstName: firstName,
+			lastName: lastName,
+			avatar: empleado.avatar,
+			email: email,
+			username: username,
+			address: address,
+			zipcode: zipCode,
+			department: department,
+			gender: gender
+		)
 	}
 }

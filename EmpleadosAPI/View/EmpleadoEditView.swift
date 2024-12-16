@@ -7,41 +7,48 @@
 
 import SwiftUI
 
-/// Esta es la vista de edición de un empleado, que permite modificar tanto información personal como corporativa.
+/// Vista de edición de un empleado que combina datos personales y corporativos con validación de campos.
 ///
 /// - Objetivo:
-///   Presentar un formulario para editar los datos de un empleado, separando la información en secciones.
-///   La vista utiliza el `EmpleadoEditViewModel` para trabajar con una copia editable del empleado,
-///   así como el componente `TextFieldEdit` para campos con validación integrada.
+///   Esta vista presenta un formulario dividido en secciones para editar la información de un empleado.
+///   Utiliza `EmpleadoEditViewModel` para gestionar el estado editable y las validaciones, y `TextFieldEdit`
+///   para ofrecer campos con validación integrada. Permite actualizar el empleado a través de `EmpleadosViewModel`
+///   obtenido del entorno.
 ///
 /// - Secciones del formulario:
-///   1. **Personal Information:**
-///      - Nombre (`firstName`)
-///      - Apellido (`lastName`)
-///      - Dirección (`address`)
-///      - Género (`gender`) - seleccionado mediante un `Picker` con estilo segmentado.
+///   1. **Personal Information**:
+///      - `firstName`, `lastName`, `address`, `zipCode`
+///      - `gender` seleccionable mediante `Picker` con estilo segmentado.
 ///
-///   2. **Corporate Information:**
-///      - Email (`email`) - utiliza validación de formato con `validateEmail`.
-///      - Nombre de usuario (`username`) - utiliza validación genérica para campos vacíos.
-///      - Departamento (`department`) - seleccionado mediante un `Picker` con estilo navegación.
+///   2. **Corporate Information**:
+///      - `email` (validación de formato con `validateEmail`)
+///      - `username` (validación de longitud y caracteres con `validateUsername`)
+///      - `department` seleccionable mediante `Picker` con estilo navegación.
 ///
-/// - Uso de `TextFieldEdit`:
-///   Cada campo utiliza el componente personalizado `TextFieldEdit` para mostrar el texto, la etiqueta, el fondo y la validación
-///   automáticamente. Si el campo es inválido, se muestra un mensaje de error.
+/// - Validaciones:
+///   Cada campo se valida conforme el usuario edita. Si un campo no cumple las condiciones,
+///   aparece un mensaje de error debajo del `TextField`. Si al pulsar "Save" existen errores,
+///   se muestra una alerta con un mensaje global, evitando guardar los cambios.
+///
+/// - Guardado:
+///   El botón "Save" en la barra de herramientas intenta crear un `Empleado` actualizado mediante `updateEmpleado()`.
+///   Si la validación pasa, el ViewModel del entorno (`EmpleadosViewModel`) actualiza el empleado remotamente
+///   llamando a `updateEmpleado(_:)`. Si la actualización es exitosa, la vista se cierra (`dismiss()`).
 ///
 /// - Navegación:
-///   Esta vista se puede presentar dentro de una `NavigationStack` para ofrecer una experiencia
-///   consistente con las convenciones de SwiftUI.
+///   Puede presentarse dentro de una `NavigationStack` para una experiencia de navegación coherente con SwiftUI.
 ///
 /// - Ejemplo:
 ///   ```swift
 ///   NavigationStack {
 ///       EmpleadoEditView(empleadoEditVM: EmpleadoEditViewModel(empleado: .empleadoPreview))
+///           .environment(EmpleadosViewModel(repository: PreviewRepository()))
 ///   }
 ///   ```
 struct EmpleadoEditView: View {
 	@Bindable var empleadoEditVM: EmpleadoEditViewModel
+	@Environment(EmpleadosViewModel.self) private var vm
+	@Environment(\.dismiss) var dismiss
 	var body: some View {
 		ScrollView {
 			Form {
@@ -75,7 +82,7 @@ struct EmpleadoEditView: View {
 				Section {
 					TextFieldEdit(label: "email", contentType: .emailAddress, autocapitalizationType: .never, campo: $empleadoEditVM.email, validate: empleadoEditVM.validateEmail)
 						.keyboardType(.emailAddress)
-					TextFieldEdit(label: "username", contentType: .username, autocapitalizationType: .words, campo: $empleadoEditVM.username, validate: empleadoEditVM.validateIsEmpty)
+					TextFieldEdit(label: "username", contentType: .username, autocapitalizationType: .words, campo: $empleadoEditVM.username, validate: empleadoEditVM.validateUsername)
 					
 					Text("Department")
 						.font(.headline)
@@ -103,7 +110,12 @@ struct EmpleadoEditView: View {
 			.toolbar {
 				ToolbarItem(placement: .confirmationAction) {
 					Button {
-						print("guardar")
+						if let empleado = empleadoEditVM.updateEmpleado() {
+							Task {
+								await vm.updateEmpleado(empleado)
+								dismiss()
+							}
+						}
 					} label: {
 						HStack {
 							Text("Save")
@@ -114,6 +126,10 @@ struct EmpleadoEditView: View {
 					
 				}
 			}
+			.alert(
+				"Validation Error",
+				isPresented: $empleadoEditVM.showAlert) {}
+				message: { Text(empleadoEditVM.errorMessage)}
 		}
 	}
 }
@@ -121,5 +137,6 @@ struct EmpleadoEditView: View {
 #Preview {
 	NavigationStack {
 		EmpleadoEditView(empleadoEditVM: EmpleadoEditViewModel(empleado: .empleadoPreview))
+			.environment(EmpleadosViewModel(repository: PreviewRepository()))
 	}
 }

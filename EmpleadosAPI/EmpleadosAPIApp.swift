@@ -12,12 +12,15 @@ import SwiftUI
 
 @main
 struct EmpleadosAPIApp: App {
+	@State var vm = EmpleadosViewModel()
     var body: some Scene {
         WindowGroup {
             if isIPad {
 				EntryViewIPad16()
+					.environment(vm)
 			} else {
 				EntryViewIPhone()
+					.environment(vm)
 			}
         }
     }

@@ -58,9 +58,43 @@ final class EmpleadosViewModel {
 		}
 	}
 	
+	/// Actualiza la lista de empleados con el empleado modificado, si existe.
+	/// - Parámetros:
+	///   - empleado: El empleado con la información actualizada.
+	/// - Comportamiento:
+	///   Busca el empleado en la lista interna `empleados` por su `id`. Si lo encuentra, lo reemplaza por la versión actualizada.
+	///   Esto permite que la vista refleje inmediatamente los cambios locales realizados sobre un empleado sin tener que
+	///   volver a cargar todos los datos.
 	func saveEmpleado(_ empleado: Empleado) {
 		if let index = empleados.firstIndex(where: { $0.id == empleado.id }) {
 			empleados[index] = empleado
+		}
+	}
+	
+	/// Actualiza un empleado en el repositorio remoto y luego sincroniza el estado local con la última versión.
+	///
+	/// - Parámetros:
+	///   - empleado: El empleado con la información ya validada y editada, listo para ser enviado al repositorio.
+	///
+	/// - Comportamiento:
+	///   1. Envía el empleado actualizado al repositorio utilizando `updateEmpleado(_:)`.
+	///   2. Si la operación es exitosa, vuelve a solicitar la información actualizada del empleado al repositorio con `getEmpleado(id:)`.
+	///   3. Si el repositorio devuelve el empleado actualizado, se llama a `saveEmpleado(_:)` para reflejar los cambios en la lista local.
+	///   4. Si ocurre algún error durante la actualización o la obtención del empleado, se asigna el mensaje de error a `errorMsg` y se muestra una alerta (`showErrorAlert`).
+	///
+	/// - Observación:
+	///   Está marcado con `@MainActor` para asegurar que las operaciones que afectan directamente al estado observable
+	///   (como `empleados`, `errorMsg` y `showErrorAlert`) se ejecuten en el hilo principal, evitando Data Races.
+	@MainActor
+	func updateEmpleado(_ empleado: Empleado) async {
+		do {
+			try await repository.updateEmpleado(empleado)
+			if let updatedEmpleado = try await repository.getEmpleado(id: empleado.id) {
+				saveEmpleado(updatedEmpleado)
+			}
+		} catch {
+			self.errorMsg = error.localizedDescription
+			self.showErrorAlert.toggle()
 		}
 	}
 	

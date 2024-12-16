@@ -36,9 +36,9 @@ extension URLRequest {
 	static func post<JSON>(url: URL, body: JSON, method: HTTPMethod = .post) -> URLRequest where JSON: Encodable {
 		var request = URLRequest(url: url)
 		request.timeoutInterval = 60
-		request.httpMethod = HTTPMethod.post.rawValue
-		request.setValue("applicartion/json", forHTTPHeaderField: "Accept")
-		request.setValue("applicartion/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+		request.httpMethod = method.rawValue
+		request.setValue("application/json", forHTTPHeaderField: "Accept")
+		request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 		request.httpBody = try? JSONEncoder().encode(body)
 		return request
 	}

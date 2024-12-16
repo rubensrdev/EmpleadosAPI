@@ -30,4 +30,15 @@ struct RemoteRepository: NetworkInteractor, RepositoryProtocol {
 	func getEmpleado(id empleadoId: Int) async throws -> Empleado? {
 		try await executeRequest(request: .get(.getEmplead(id: empleadoId)), type: EmpleadoDTO.self).toEmpleado
 	}
+	
+	/// Actualiza la información de un empleado en la API remota.
+	/// - Parámetros:
+	///   - empleado: El empleado con la información actualizada a enviar al servidor.
+	/// - Errores:
+	///   - `NetworkError.status` si el código de estado no es el esperado.
+	///   - `NetworkError.json` si hay un problema en la codificación o decodificación de datos.
+	///   - `NetworkError.general` si ocurre algún otro error de red.
+	func updateEmpleado(_ empleado: Empleado) async throws {
+		try await validateStatus(request: .post(url: .empleado, body: empleado.update, method: .put))
+	}
 }

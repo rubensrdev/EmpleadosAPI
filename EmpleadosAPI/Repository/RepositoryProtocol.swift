@@ -26,4 +26,12 @@ protocol RepositoryProtocol: Sendable {
 	/// - Errores:
 	///   - Puede lanzar errores relacionados con la recuperación de datos.
 	func getEmpleado(id empleadoId: Int) async throws -> Empleado?
+	
+	/// Función asíncrona que actualiza la información de un empleado existente en la fuente de datos.
+	/// - Parámetros:
+	///   - `empleado`: El empleado con la información actualizada a persistir.
+	/// - Errores:
+	///   - Puede lanzar errores relacionados con la persistencia o la comunicación con el servidor.
+	///     Por ejemplo, un fallo al conectar con la API, un error de validación o un problema de acceso a la base de datos.
+	func updateEmpleado(_ empleado: Empleado) async throws
 }

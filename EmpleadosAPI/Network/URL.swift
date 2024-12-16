@@ -34,6 +34,8 @@ extension URL {
     static func searchEmpleados(_ search: String) -> URL {
         api.appending(path: "searchEmpleados").appending(queryItems: [.search(search)])
     }
+	/// Función que devuelve una URL configurada para guardar o actualizar un empleado
+	static let empleado = api.appending(path: "empleado")
 }
 // URLQueryItem es: Es una estructura que representa un par clave-valor que se usa en la parte de consulta de una URL.
 // Por ejemplo, en https://api.example.com?search=empleados, search=empleados es un URLQueryItem

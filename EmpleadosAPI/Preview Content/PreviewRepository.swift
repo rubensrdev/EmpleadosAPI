@@ -43,4 +43,7 @@ struct PreviewRepository: NetworkInteractor, RepositoryProtocol {
 		let data = try Data(contentsOf: url)
 		return try JSONDecoder().decode(type, from: data)
 	}
+	
+	
+	func updateEmpleado(_ empleado: Empleado) async throws {}
 }

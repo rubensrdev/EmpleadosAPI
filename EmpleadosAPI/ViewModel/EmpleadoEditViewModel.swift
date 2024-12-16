@@ -40,6 +40,7 @@ final class EmpleadoEditViewModel {
 	var email: String
 	var username: String
 	var address: String
+	var zipCode: String
 	var department: Empleado.Departamento
 	var gender: Empleado.Genero
 	
@@ -51,6 +52,7 @@ final class EmpleadoEditViewModel {
 		email = empleado.email
 		username = empleado.username
 		address = empleado.address
+		zipCode = empleado.zipcode
 		department = empleado.department
 		gender = empleado.gender
 	}

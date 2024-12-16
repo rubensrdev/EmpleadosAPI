@@ -58,5 +58,11 @@ final class EmpleadosViewModel {
 		}
 	}
 	
+	func saveEmpleado(_ empleado: Empleado) {
+		if let index = empleados.firstIndex(where: { $0.id == empleado.id }) {
+			empleados[index] = empleado
+		}
+	}
+	
 }
 

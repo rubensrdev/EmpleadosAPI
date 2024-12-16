@@ -70,6 +70,9 @@ struct EntryViewIPad: View {
 		.task {
 			await vm.getEmpleados()
 		}
+		.refreshable {
+			await vm.getEmpleados()
+		}
 		.alert("App Error", isPresented: $vm.showErrorAlert) {} message: {
 			Text(vm.errorMsg)
 		}

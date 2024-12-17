@@ -16,11 +16,21 @@ import Testing
 @Suite("EmpleadosEditViewModel Tests")
 struct EmpleadosAPIEdiValidationtTests {
 	
-	private let vm = EmpleadoEditViewModel(empleado: .empleadoPreview)
+	/// Instancia del ViewModel que se utiliza en las pruebas.
+	/// Inicializada con datos de ejemplo mediante `Empleado.empleadoPreview`.
+	private let vm: EmpleadoEditViewModel
+	
+	init() {
+		vm = EmpleadoEditViewModel(empleado: .empleadoPreview)
+	}
 
-	/// La función `validateIsEmpty` se encarga de verificar si una cadena
-	/// está vacía o no:
-	/// - Resultado esperado:  `"cannot be empty"` porque la cadena text no tiene valor
+
+	/// Prueba que `validateIsEmpty` devuelve el mensaje `"cannot be empty"`
+	/// cuando el valor proporcionado está vacío.
+	///
+	/// - Given: Una cadena vacía como entrada.
+	/// - When: Se llama a `validateIsEmpty` con la cadena vacía.
+	/// - Then: El resultado debe ser el mensaje `"cannot be empty"`.
 	@Test func validateIsEmptyWhenValueIsEmpty() {
 		// Given
 		let text = ""
@@ -29,13 +39,15 @@ struct EmpleadosAPIEdiValidationtTests {
 		// Then
 		#expect(result == "cannot be empty")
 	}
-
-	/// La función `validateIsEmpty` se encarga de verificar si una cadena
-	/// está vacía o no:
-	/// - Resultado esperado: `nil` porque la cadena text tiene valor
+	
+	/// Prueba que `validateIsEmpty` devuelve `nil` cuando el valor proporcionado
+	/// no está vacío.
+	///
+	/// - Given: Una cadena con contenido válido como entrada.
+	/// - When: Se llama a `validateIsEmpty` con la cadena no vacía.
+	/// - Then: El resultado debe ser `nil`.
 	@Test func validateIsEmptyWhenValueNotIsEmpty() {
 		// Given
-		let vm = EmpleadoEditViewModel(empleado: .empleadoPreview)
 		let text = "user"
 		// When
 		let result = vm.validateIsEmpty(value: text)
@@ -43,4 +55,63 @@ struct EmpleadosAPIEdiValidationtTests {
 		#expect(result == nil)
 	}
 	
+	/// Prueba la función `validateEmail` cuando se proporciona una dirección de correo válida.
+	/// - Given: Una cadena de texto con un formato de correo válido, como "user@example.com".
+	/// - When: Se llama a `validateEmail(text:)` con el correo válido.
+	/// - Then: La función debería devolver `nil`, indicando que no hay errores de validación.
+	@Test func validateEmailWhenValueIsValid() {
+		let email = "user@example.com"
+		let result = vm.validateEmail(text: email)
+		#expect(result == nil)
+	}
+	
+	/// Prueba la función `validateEmail` cuando se proporciona una dirección de correo inválida.
+	/// - Given: Una cadena de texto con un formato de correo inválido, sin el símbolo "@".
+	/// - When: Se llama a `validateEmail(text:)` con el correo inválido.
+	/// - Then: La función debería devolver un mensaje de error: `"is not a valid email"`.
+	@Test func validateEmailWhenValueIsInvalid() {
+		let email = "userexample.com"
+		let result = vm.validateEmail(text: email)
+		#expect(result == "is not a valid email")
+	}
+	
+	/// Prueba la función `validateUsername` cuando se proporciona un nombre de usuario válido.
+	/// - Given: Una cadena de texto que cumple con las reglas del nombre de usuario, como "user23".
+	/// - When: Se llama a `validateUsername(value:)` con un nombre de usuario válido.
+	/// - Then: La función debería devolver `nil`, indicando que no hay errores de validación.
+	@Test func validateUserNameWhenValueIsValid() {
+		let username = "user23"
+		let result = vm.validateUsername(value: username)
+		#expect(result == nil)
+	}
+	
+	/// Prueba la función `validateUsername` cuando el nombre de usuario supera los 16 caracteres.
+	/// - Given: Una cadena de texto con una longitud mayor a 16 caracteres, como "useruseruseruseruseruseruser".
+	/// - When: Se llama a `validateUsername(value:)` con un nombre de usuario demasiado largo.
+	/// - Then: La función debería devolver un mensaje de error: `"must be between 6 and 16 characters long"`.
+	@Test func validateUserNameWhenValueLenghtIsOver16() {
+		let username = "useruseruseruseruseruseruser"
+		let result = vm.validateUsername(value: username)
+		#expect(result == "must be between 6 and 16 characters long")
+	}
+	
+	/// Prueba la función `validateUsername` cuando el nombre de usuario tiene menos de 6 caracteres.
+	/// - Given: Una cadena de texto con menos de 6 caracteres, como "user".
+	/// - When: Se llama a `validateUsername(value:)` con un nombre de usuario demasiado corto.
+	/// - Then: La función debería devolver un mensaje de error: `"must be between 6 and 16 characters long"`.
+	@Test func validateUserNameWhenValueLenghtIsLess6() {
+		let username = "user"
+		let result = vm.validateUsername(value: username)
+		#expect(result == "must be between 6 and 16 characters long")
+	}
+	
+	/// Prueba la función `validateUsername` cuando el nombre de usuario contiene caracteres no válidos.
+	/// - Given: Una cadena de texto con caracteres especiales no permitidos, como "user23***".
+	/// - When: Se llama a `validateUsername(value:)` con un nombre de usuario que contiene caracteres inválidos.
+	/// - Then: La función debería devolver un mensaje de error: `"can only contain letters and numbers"`.
+	@Test func validateUserNameWhenValueContainsCharactersInvalids() {
+		let username = "user23***"
+		let result = vm.validateUsername(value: username)
+		#expect(result == "can only contain letters and numbers")
+	}
 }

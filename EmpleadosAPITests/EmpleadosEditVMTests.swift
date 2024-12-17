@@ -114,4 +114,59 @@ struct EmpleadosAPIEdiValidationtTests {
 		let result = vm.validateUsername(value: username)
 		#expect(result == "can only contain letters and numbers")
 	}
+	
+	/// Prueba que `updateEmpleado` retorna `nil` y acumula errores
+	/// cuando los campos `firstName` y `lastName` están vacíos.
+	@Test func updateEmpleadoWithEmptyFirstNameAndLastName() {
+		vm.firstName = ""
+		vm.lastName = ""
+		let result = vm.updateEmpleado()
+		#expect(result == nil)
+		#expect(vm.errorMessage.contains("First name cannot be empty"))
+		#expect(vm.errorMessage.contains("Last name cannot be empty"))
+		#expect(vm.showAlert == true)
+	}
+	
+	/// Prueba que `updateEmpleado` retorna `nil` y acumula errores
+	/// cuando el email es inválido.
+	@Test func updateEmpleadoWithInvalidEmail() {
+		vm.email = "email.invalid.com"
+		let result = vm.updateEmpleado()
+		#expect(result == nil)
+		#expect(vm.errorMessage.contains("Email is not a valid email"))
+		#expect(vm.showAlert == true)
+	}
+	
+	/// Prueba que `updateEmpleado` retorna `nil` y acumula errores
+	/// cuando los campos `address` y `zipCode` están vacíos.
+	@Test func updateEmpleadoWithEmptyAddressAndZipCode() {
+		vm.address = ""
+		vm.zipCode = ""
+		let result = vm.updateEmpleado()
+		#expect(result == nil)
+		#expect(vm.errorMessage.contains("Address cannot be empty"))
+		#expect(vm.errorMessage.contains("Zip code cannot be empty"))
+		#expect(vm.showAlert == true)
+	}
+	
+	/// Prueba que `updateEmpleado` actualiza correctamente el empleado
+	/// cuando todos los campos son válidos.
+	@Test func updateEmpleadoWithValidData() {
+		vm.firstName = "Idril"
+		vm.lastName = "The Dog"
+		vm.email = "idril.the@dog.com"
+		vm.username = "idrilthedog"
+		vm.address = "Ruben house"
+		vm.zipCode = "12345"
+		
+		let result = vm.updateEmpleado()
+		
+		#expect(result != nil)
+		#expect(result?.firstName == "Idril")
+		#expect(result?.lastName == "The Dog")
+		#expect(result?.email == "idril.the@dog.com")
+		#expect(vm.errorMessage.isEmpty == true)
+		#expect(vm.showAlert == false)
+	}
+	
 }

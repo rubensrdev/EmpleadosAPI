@@ -8,8 +8,7 @@
 import Testing
 @testable import EmpleadosAPI
 
-/// Suite de pruebas para validar la función `validateIsEmpty(value:)`
-/// del `EmpleadoEditViewModel`.
+/// Suite de pruebas para validar las funciones del `EmpleadoEditViewModel`.
 ///
 /// La suite utiliza un ViewModel preconfigurado con `Empleado.empleadoPreview`
 /// como datos de prueba.

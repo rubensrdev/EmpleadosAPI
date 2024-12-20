@@ -27,7 +27,7 @@ extension URLRequest {
 		var request = URLRequest(url: url)
 		request.timeoutInterval = 60
 		request.httpMethod = HTTPMethod.get.rawValue
-		request.setValue("applicartion/json", forHTTPHeaderField: "Accept")
+		request.setValue("application/json", forHTTPHeaderField: "Accept")
 		return request
 	}
 	

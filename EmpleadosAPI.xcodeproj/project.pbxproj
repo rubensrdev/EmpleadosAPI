@@ -37,6 +37,8 @@
 		45FC2CA02D0CBAFE0064839D /* TextFieldEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2C9F2D0CBAFE0064839D /* TextFieldEdit.swift */; };
 		45FC2CA22D1046960064839D /* ModelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2CA12D1046960064839D /* ModelAPI.swift */; };
 		45FC2CA42D108E750064839D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45FC2CA32D108E750064839D /* Localizable.xcstrings */; };
+		45FC2CB62D15740A0064839D /* AppConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC2CB52D15740A0064839D /* AppConfigManager.swift */; };
+		45FC2CB82D1575050064839D /* ConfigProps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45FC2CB72D1575050064839D /* ConfigProps.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		45FC2CA12D1046960064839D /* ModelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAPI.swift; sourceTree = "<group>"; };
 		45FC2CA32D108E750064839D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		45FC2CA92D1183270064839D /* EmpleadosAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpleadosAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FC2CB52D15740A0064839D /* AppConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigManager.swift; sourceTree = "<group>"; };
+		45FC2CB72D1575050064839D /* ConfigProps.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ConfigProps.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -163,6 +167,7 @@
 			children = (
 				459E91C12D031BF1004E175A /* Preview Content */,
 				459E91C22D031BF1004E175A /* Assets.xcassets */,
+				45FC2CB42D1573BD0064839D /* Config */,
 				459E91CB2D036BFF004E175A /* Model */,
 				459E91D42D0374AF004E175A /* Network */,
 				45F124A42D05A86100773F70 /* Repository */,
@@ -243,6 +248,15 @@
 				459E91C32D031BF1004E175A /* EntryViewIPhone.swift */,
 			);
 			path = iPhone;
+			sourceTree = "<group>";
+		};
+		45FC2CB42D1573BD0064839D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				45FC2CB52D15740A0064839D /* AppConfigManager.swift */,
+				45FC2CB72D1575050064839D /* ConfigProps.plist */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +352,7 @@
 				459E91C92D031BF1004E175A /* Assets.xcassets in Resources */,
 				45FC2CA42D108E750064839D /* Localizable.xcstrings in Resources */,
 				45F124AB2D05BDDF00773F70 /* empleadosPreview.json in Resources */,
+				45FC2CB82D1575050064839D /* ConfigProps.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FC2CB62D15740A0064839D /* AppConfigManager.swift in Sources */,
 				45FC2CA02D0CBAFE0064839D /* TextFieldEdit.swift in Sources */,
 				459E91D62D037610004E175A /* URL.swift in Sources */,
 				455E90B12D09B3900029CA8C /* EmpleadoCachedImageView.swift in Sources */,

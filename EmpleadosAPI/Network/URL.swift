@@ -10,7 +10,7 @@ import Foundation
 // Las definiciones de URL's a las que vamos a acceder desde la aplicación
 
 /// URL de producción del API de Empleados
-let prod = URL(string: "https://acacademy-employees-api.herokuapp.com/api")!
+let prod = URL(string: AppConfigManager.shared.baseURL)!
 /// URL de desarrollo del API de Empleados
 let desa = URL(string: "http://localhost:8080/api")
 
